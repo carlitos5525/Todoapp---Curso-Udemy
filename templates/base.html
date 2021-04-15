@@ -13,7 +13,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">container</a>
+                <a class="navbar-brand" href="#">TodoApp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
                 aria-controls="false" aria-label="Toglee nagivation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,44 +22,24 @@
                 <div class="collapse navbar-collapse" id="navbarExample07">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'category:list_categories' %}">Listar Categoria<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{% url 'category:add_category' %}">Adicionar Categoria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-link disabled" href="#">Adicionar Tarefa</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Listar Tarefa</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown</button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                    </form>
+                        
                 </div>
             </div>
         </nav>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
         {% block body %}
             
         {% endblock body %}
-        <script>$('.dropdown').dropdown()</script>
         <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
         <script src="{% static 'js/bootstrap.js' %}"></script>
     </body>

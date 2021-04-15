@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+
+    Adicionar Categoria - {{ block.super }}
+{% endblock title %}
+
+
+{% block body %}
+    
+    <div class="container">
+        <h1> Lista de Categorias<h1>  
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                          {% for category in categories  %}
+                          <tr>
+                            <th scope="row">{{category.id }}</th>
+                            <td>{{ category.name}}</td>
+                            <td>{{category.description}}</td>
+                            <td>Editar e Excluir</td>
+                          </tr>
+                          {% endfor %}   
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
+    
+    
