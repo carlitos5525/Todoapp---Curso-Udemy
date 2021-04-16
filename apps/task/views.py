@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CategoryForm, TaskForm
 from django.contrib import messages
 from .models import Category, Task
@@ -26,4 +26,18 @@ def list_categories(request):
     context = {
         'categories': categories
     }
+    return render(request, template_name, context)
+
+
+def edit_category(request, id_category):
+    template_name = 'task/edit_category.html'
+    context = {}
+    category = get_object_or_404(Category, id=id_category, owner=request.user)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('category:list_categories')
+    form = CategoryForm(instance=category)
+    context['form'] = form
     return render(request, template_name, context)

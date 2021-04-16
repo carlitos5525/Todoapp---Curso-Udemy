@@ -19,6 +19,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Descrição</th>
                         <th scope="col">Ações</th>
                       </tr>
                     </thead>
@@ -28,7 +29,10 @@
                             <th scope="row">{{category.id }}</th>
                             <td>{{ category.name}}</td>
                             <td>{{category.description}}</td>
-                            <td>Editar e Excluir</td>
+                            <td>
+                              <a href="{% url 'category:edit_category' category.id %}" class="btn btn-primary btn-sm">Editar</a>
+                              <a href="" class="btn btn-danger btn-sm">Excluir</a>
+                            </td>
                           </tr>
                           {% endfor %}   
                     </tbody>
