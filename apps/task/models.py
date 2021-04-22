@@ -20,10 +20,11 @@ class Task(models.Model):
         ('B', 'Baixa'),
         ('M', 'Média'),
         ('A', 'Alta'),
+        ('S', 'SuperAlta')
     )
     STATUS_CHOICES=(
         ('EX', 'Em execução'),
-        ('PD', 'Pendenter'),
+        ('PD', 'Pendente'),
         ('CD', 'Concluída'),
     )
     name = models.CharField(verbose_name='Tarefa', max_length=200)

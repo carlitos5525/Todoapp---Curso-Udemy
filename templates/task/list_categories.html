@@ -30,8 +30,8 @@
                             <td>{{ category.name}}</td>
                             <td>{{category.description}}</td>
                             <td>
-                              <a href="{% url 'category:edit_category' category.id %}" class="btn btn-primary btn-sm">Editar</a>
-                              <a href="{% url 'category:delete_category' category.id %}" class="btn btn-danger btn-sm confirm-delete" data-toggle="modal", data-target="#confirmDeleteModal" id="deleteButton-{{ category.id }}" >Excluir</a>
+                              <a href="{% url 'tasks:edit_category' category.id %}" class="btn btn-primary btn-sm">Editar</a>
+                              <a href="{% url 'tasks:delete_category' category.id %}" class="btn btn-danger btn-sm confirm-delete" data-toggle="modal", data-target="#confirmDeleteModal" id="deleteButton-{{ category.id }}" >Excluir</a>
                             </td>
                           </tr>
                           {% endfor %}   
