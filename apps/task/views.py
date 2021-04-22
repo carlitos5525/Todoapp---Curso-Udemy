@@ -71,3 +71,11 @@ def add_task(request):
     form = TaskForm()
     context['form'] = form
     return render(request, template_name, context)
+
+
+def list_tasks(request):
+    template_name = 'task/list_tasks.html'
+    context = {}
+    tasks = Task.objects.filter(owner = request.user).exclude(status = 'CD')
+    context['tasks'] = tasks
+    return render(request, template_name, context)

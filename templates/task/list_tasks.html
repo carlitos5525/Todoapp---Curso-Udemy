@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+
+    Lista de Tarefas - {{ block.super }}
+{% endblock title %}
+
+
+{% block body %}
+    
+    <div class="container">
+        <h1> Lista de Tarefas<h1>  
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tarefa</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Data Final</th>
+                        <th scope="col">Prioridade</th>
+                        <th scope="col">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                          {% for task in tasks  %}
+                          <tr>
+                            <th scope="row">{{task.id }}</th>
+                            <td>{{ task.name}}</td>
+                            <td>{{task.description}}</td>
+                            <td>{{task.end_date}}</td>
+                            <td>{{task.get_priority_display}}</td>
+
+                            <td>
+                              <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                              <a href="#" class="btn btn-danger btn-sm confirm-delete" data-toggle="modal", data-target="#confirmDeleteModal" id="deleteButton-{{ category.id }}" >Excluir</a>
+                            </td>
+                          </tr>
+                          {% endfor %}   
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        {% include 'task/confirm_delete_modal.html' %}
+    </div>
+
+{% endblock body %}
