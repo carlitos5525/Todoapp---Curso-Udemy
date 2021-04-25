@@ -93,3 +93,13 @@ def edit_task(request, id_task):
     form = TaskForm(instance=task)
     context['form'] = form
     return render(request, template_name, context)
+
+
+def delete_task(request, id_task):
+    task = get_object_or_404(Task, id=id_task)
+    if task.owner == request.user:
+        task.delete()
+        return redirect('task:list_tasks')
+    else:
+        messages.error('Você não tem permissão para excluir essa tarefa')
+        return redirect('core:home')
