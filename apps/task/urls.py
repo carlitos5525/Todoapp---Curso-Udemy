@@ -9,5 +9,6 @@ urlpatterns = [
     path('categorias/excluir/<int:id_category>/', views.delete_category, name='delete_category'),
     path('categorias/', views.list_categories, name='list_categories'),
     path('adicionar/', views.add_task, name='add_task'),
+    path('editar/<int:id_task>/', views.edit_task, name='edit_task'),
     path('', views.list_tasks, name='list_tasks'),
 ]

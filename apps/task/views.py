@@ -79,3 +79,17 @@ def list_tasks(request):
     tasks = Task.objects.filter(owner = request.user).exclude(status = 'CD')
     context['tasks'] = tasks
     return render(request, template_name, context)
+
+
+def edit_task(request, id_task):
+    template_name = 'task/edit_task.html'
+    context = {}
+    task = get_object_or_404(Task, id=id_task, owner=request.user)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('tasks:list_tasks')
+    form = TaskForm(instance=task)
+    context['form'] = form
+    return render(request, template_name, context)
