@@ -139,6 +139,7 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
     messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
 }
 
 # Static files (CSS, JavaScript, Images)
