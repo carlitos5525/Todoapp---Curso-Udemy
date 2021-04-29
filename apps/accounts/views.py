@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import UserForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 def add_user(request):
@@ -32,3 +33,9 @@ def user_login(request):
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
     return render(request, template_name, {})
+
+
+@login_required(login_url='/contas/login/')
+def user_logout(request):
+    logout(request)
+    return redirect('accounts:login')
