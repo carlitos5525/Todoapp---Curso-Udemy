@@ -26,9 +26,10 @@
         <input type="text" id="username" name="username" class="form-control" placeholder="Nome de usuário" required autofocus>
         <label for="password" class="sr-only">Senha</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Digite su senha" required>
-        
+        {% include 'partials/messages.html' %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        
         </form>
     </div>
   </body>

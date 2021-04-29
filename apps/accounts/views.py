@@ -53,6 +53,7 @@ def user_change_password(request):
             messages.success(request, 'Senha alterada com sucesso.')
         else:
             messages.error(request, "Não foi possível trocar a senha.")
+            messages.error(request, form.errors)
     form = PasswordChangeForm(user=request.user)
     context['form'] = form
     return render(request, template_name, context)
