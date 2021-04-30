@@ -43,8 +43,8 @@
                                 {{ user.first_name|default:user.username }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Perfil</a>
-                                  <a class="dropdown-item" href="#">Trocar Senha</a>
+                                  <a class="dropdown-item" href="{% url 'accounts:add_user_profile' %}">Perfil</a>
+                                  <a class="dropdown-item" href="{% url 'accounts:alterar_senha' %}">Trocar Senha</a>
                                   <a class="dropdown-item" href="{% url 'accounts:logout' %}">Sair</a>
                                 </div>
                               </div>

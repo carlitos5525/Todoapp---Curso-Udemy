@@ -72,6 +72,7 @@ def add_task(request):
     context['form'] = form
     return render(request, template_name, context)
 
+
 @login_required(login_url='/contas/login/')
 def list_tasks(request):
     template_name = 'task/list_tasks.html'
@@ -79,6 +80,7 @@ def list_tasks(request):
     tasks = Task.objects.filter(owner = request.user).exclude(status = 'CD')
     context['tasks'] = tasks
     return render(request, template_name, context)
+
 
 @login_required(login_url='/contas/login/')
 def edit_task(request, id_task):
@@ -103,3 +105,16 @@ def delete_task(request, id_task):
     else:
         messages.error('Você não tem permissão para excluir essa tarefa')
         return redirect('core:home')
+
+
+@login_required(login_url='/contas/login/')
+def task_details(request, task_id):
+    template_name = 'task/details_task.html'
+    context = {}
+    task = get_object_or_404(Task, id=task_id)
+    if task.owner == request.user:
+        form = TaskForm(instance=task)
+        context['form'] = form
+        return render(request, template_name, context)
+    else:
+        return redirect('')

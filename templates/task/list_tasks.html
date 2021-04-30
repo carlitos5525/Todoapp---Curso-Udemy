@@ -35,6 +35,7 @@
                             <td>{{task.get_priority_display}}</td>
 
                             <td>
+                              <a href="{% url 'tasks:details_task' task.id %}" class="btn btn-primary btn-sm">Detalhes</a>
                               <a href="{% url 'tasks:edit_task' task.id %}" class="btn btn-primary btn-sm">Editar</a>
                               <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger btn-sm confirm-delete" data-toggle="modal", data-target="#confirmDeleteModal" id="deleteButton-{{ task.id }}" >Excluir</a>
                             </td>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .forms import UserForm
+from .forms import UserForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -55,5 +55,21 @@ def user_change_password(request):
             messages.error(request, "Não foi possível trocar a senha.")
             messages.error(request, form.errors)
     form = PasswordChangeForm(user=request.user)
+    context['form'] = form
+    return render(request, template_name, context)
+
+
+@login_required(login_url='/contas/login/')
+def add_user_profile(request):
+    template_name = 'accounts/add_user_profile.html'
+    context = {}
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.user = request.user
+            f.save()
+            messages.success(request, 'Perfil alterado com sucesso')
+    form = UserProfileForm()
     context['form'] = form
     return render(request, template_name, context)
