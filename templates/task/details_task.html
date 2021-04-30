@@ -14,8 +14,12 @@
         <h1> Editar Categoria<h1>
         <div class="row">
             <div class="col-md-12">
-                {{form.as_table}}
-                      
+                <p>{{task.name}}</p>
+                <p>{{task.description}}</p>
+                <p>{{task.end_date}}</p>
+                <p>{{task.get_priority_display}}</p>
+                <p>{{task.category.name}}</p>
+                <p>{{task.get_status_display}}</p>
             </div>
         </div>
     </div>

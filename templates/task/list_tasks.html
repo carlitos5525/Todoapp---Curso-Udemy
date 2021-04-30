@@ -17,7 +17,6 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Tarefa</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Data Final</th>
@@ -28,7 +27,6 @@
                     <tbody>
                           {% for task in tasks  %}
                           <tr>
-                            <th scope="row">{{task.id }}</th>
                             <td>{{ task.name}}</td>
                             <td>{{task.description}}</td>
                             <td>{{task.end_date}}</td>
