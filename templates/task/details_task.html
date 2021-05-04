@@ -18,7 +18,11 @@
                 <p>{{task.description}}</p>
                 <p>{{task.end_date}}</p>
                 <p>{{task.get_priority_display}}</p>
-                <p>{{task.category.name}}</p>
+                <p>
+                {% for category in categories %}
+                    {{category.name}}
+                {% endfor %}
+                    </p>
                 <p>{{task.get_status_display}}</p>
             </div>
         </div>

@@ -114,6 +114,8 @@ def task_details(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if task.owner == request.user:
         context['task'] = task
+        categories = task.category.all()
+        context['categories'] = categories
         return render(request, template_name, context)
     else:
         return redirect('')

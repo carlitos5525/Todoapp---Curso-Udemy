@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     photo = models.ImageField(verbose_name='Foto', upload_to='photos')
     cell_phone = models.CharField(verbose_name='Celular', max_length=16)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
 
     class Meta:

@@ -49,6 +49,9 @@
                                 </div>
                               </div>
                         </li> 
+                        <li class="nav-item" id="profile-photo">
+                            <img src="{{ user.profile.photo.url }}" class="rounded-circle" width="40" height="40">
+                        </li>
                         {% endif %}          
                 </div>
             </div>
@@ -63,6 +66,9 @@
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+            <script src="{% static 'js/mask.js' %}"></script>
+
             <script>
                 $(document).on('click', '.confirm-delete', function() {
                     $('#confirmDeleteModal').attr('caller-id', $(this).attr('id'));
