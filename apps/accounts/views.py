@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from .models import UserProfile
 
 
 def add_user(request):
@@ -69,7 +70,38 @@ def add_user_profile(request):
             f = form.save(commit=False)
             f.user = request.user
             f.save()
-            messages.success(request, 'Perfil alterado com sucesso')
+            messages.success(request, 'Perfil criado com sucesso')
     form = UserProfileForm()
+    context['form'] = form
+    return render(request, template_name, context)
+
+
+@login_required(login_url='/contas/login/')
+def list_user_profile(request):
+    template_name = 'accounts/list_user_profile.html'
+    context = {}
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        context = {
+        'profile': profile
+        }
+    except UserProfile.DoesNotExist:
+        messages.error(request, 'Usuário inexistente')
+   
+    return render(request, template_name, context)
+
+
+@login_required(login_url='/contas/login/')
+def change_user_profile(request, username):
+    template_name = 'accounts/add_user_profile.html'
+    context = {}
+    profile = UserProfile.objects.get(user__username=username)
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Perfil atualizado com sucesso.')
+    else:
+        form = UserProfileForm(instance=profile)
     context['form'] = form
     return render(request, template_name, context)
