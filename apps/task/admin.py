@@ -7,5 +7,9 @@ from .models import Category, Task
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'owner']
 
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ['name', 'end_date', 'priority']
+
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Task)

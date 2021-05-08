@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, UserFormChangeInformation
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -103,5 +103,21 @@ def change_user_profile(request, username):
             messages.success(request, 'Perfil atualizado com sucesso.')
     else:
         form = UserProfileForm(instance=profile)
+    context['form'] = form
+    return render(request, template_name, context)
+
+
+@login_required(login_url='/contas/login/')
+def change_user_information(request, username):
+    template_name = 'accounts/change_user_information.html'
+    context = {}
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        form = UserFormChangeInformation(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Informações atualizadas com sucesso.')
+    else: 
+        form = UserFormChangeInformation(instance=user)
     context['form'] = form
     return render(request, template_name, context)

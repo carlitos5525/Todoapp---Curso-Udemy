@@ -12,4 +12,5 @@ urlpatterns = [
     path('novo_perfil/', views.add_user_profile, name='add_user_profile'),
     path('perfil/', views.list_user_profile, name='list_user_profile'),
     path('editar_perfil/<slug:username>', views.change_user_profile, name='change_user_profile'),
+    path('editar_usuario/<slug:username>', views.change_user_information, name='change_user_information',)
 ]
