@@ -13,19 +13,18 @@
     <div class="container">
         <h1> Tarefas de Hoje<h1>  
         <div class="row">
-          <form class="form-inline my-2 my-md-0" action="{% url 'core:search_tasks' %}">
-            <input class="form-control" name="query" type="text" placeholder="Busca" aria-label="Search">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="is_conclued">
-                Concluído
-            </label>
-            <br>
-            <label>Data de início</label>
-            <input class="form-control" type="date"  name="date_start_with">
-            <label>Data Final</label>
-            <input class="form-control" type="date"  name="date_end_with">
-            <button class="btn btn-outline-success my-2 my-sn-0" type="submit">Buscar</button>
-        </form>
+            <form class="form-inline my-2 my-md-0" action="{% url 'core:search_tasks' %}">
+                <input class="form-control" name="query" type="text" placeholder="Busca" aria-label="Search">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="is_conclued">
+                    Concluído
+                </label>
+                <br>
+                <label>Data de início</label>
+                <input class="form-control" type="date"  name="date_start_with">
+                <label>Data Final</label>
+                <input class="form-control" type="date"  name="date_end_with">
+                <button class="btn btn-outline-success my-2 my-sn-0" type="submit">Buscar</button>
             <div class="col-md-12">
                 <table class="table">
                     <thead>
